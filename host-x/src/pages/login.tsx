@@ -18,7 +18,7 @@ export default function Login() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    login.mutate({ data: { username, password } }, {
+    login.mutate({ username, password }, {
       onSuccess: () => setLocation("/"),
       onError: (error) => {
         toast({
