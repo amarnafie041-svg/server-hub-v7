@@ -1,6 +1,4 @@
-import { pgTable, text, integer, timestamp, pgEnum, serial, date } from "drizzle-orm/pg-core";
-import postgres from "postgres";
-import { drizzle } from "drizzle-orm/postgres-js";
+import { pgTable, text, integer, timestamp, serial } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -65,10 +63,27 @@ export type NewActivity = typeof activityTable.$inferInsert;
 
 export const schema = { usersTable, subdomainsTable, processesTable, activityTable };
 
-const connStr = process.env.DATABASE_URL;
-if (!connStr) {
-  throw new Error("DATABASE_URL is not set");
+let _db: any = null;
+
+function getDb(): any {
+  if (_db) return _db;
+  const connStr = (typeof process !== "undefined" && process.env?.DATABASE_URL) || "";
+  if (!connStr) {
+    throw new Error("DATABASE_URL is not set - database features unavailable");
+  }
+  const globalReq = (globalThis as any).require;
+  if (typeof globalReq !== "function") {
+    throw new Error("require() not available - check esbuild banner");
+  }
+  const postgres = globalReq("postgres");
+  const { drizzle } = globalReq("drizzle-orm/postgres-js");
+  const client = postgres(connStr, { prepare: false });
+  _db = drizzle(client, { schema });
+  return _db;
 }
 
-const client = postgres(connStr, { prepare: false });
-export const db = drizzle(client, { schema });
+export const db = new Proxy({} as any, {
+  get(_target, prop: string | symbol) {
+    return getDb()[prop];
+  },
+});
