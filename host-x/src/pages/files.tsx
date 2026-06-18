@@ -1,5 +1,5 @@
 import { useRef, useState, useCallback } from "react";
-import { useListFiles, useDeleteFile, useCreateDirectory, useRenameFile, useTouchFile } from "@workspace/api-client-react";
+import { useListFiles, useDeleteFile, useCreateDirectory, useRenameFile, useTouchFile } from "@/lib/api-client";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

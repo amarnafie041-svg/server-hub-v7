@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useListFiles, useReadFile, useWriteFile } from "@workspace/api-client-react";
+import { useListFiles, useReadFile, useWriteFile } from "@/lib/api-client";
 import MonacoEditor from "@monaco-editor/react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";

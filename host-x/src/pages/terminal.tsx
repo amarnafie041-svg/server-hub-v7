@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { useExecuteCommand, useListFiles, useAiChat } from "@workspace/api-client-react";
+import { useExecuteCommand, useListFiles, useAiChat } from "@/lib/api-client";
 import { Button } from "@/components/ui/button";
 import { Download, Play, X, FolderOpen, ChevronRight, ArrowLeft, Wrench } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";

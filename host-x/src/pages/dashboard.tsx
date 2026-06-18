@@ -1,4 +1,4 @@
-import { useGetDashboardStats } from "@workspace/api-client-react";
+import { useGetDashboardStats } from "@/lib/api-client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Cpu, HardDrive, MemoryStick, Activity, Server, FileBox, Globe } from "lucide-react";
 import { Progress } from "@/components/ui/progress";

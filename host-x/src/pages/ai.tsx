@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useAiChat } from "@workspace/api-client-react";
+import { useAiChat } from "@/lib/api-client";
 import { Button } from "@/components/ui/button";
 import { Bot, Send, User, Trash2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";

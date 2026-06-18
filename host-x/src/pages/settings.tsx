@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useGetSettings, useUpdateSettings, useChangePassword, useGetMe } from "@workspace/api-client-react";
+import { useGetSettings, useUpdateSettings, useChangePassword, useGetMe } from "@/lib/api-client";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

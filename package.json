@@ -2,22 +2,9 @@
   "name": "server-hub-v7",
   "version": "1.0.0",
   "private": true,
-  "description": "SERVER HUB V7 - Modern server management platform",
-  "workspaces": [
-    "host-x",
-    "api-server",
-    "lib/*",
-    "packages/*"
-  ],
   "scripts": {
-    "dev": "concurrently \"npm run dev -w @workspace/api-server\" \"npm run dev -w @workspace/host-x\"",
-    "build:server": "npm run build -w @workspace/api-server",
-    "build:client": "npm run build -w @workspace/host-x",
-    "start": "npm run start -w @workspace/api-server",
-    "typecheck": "npm run typecheck -w @workspace/api-server && npm run typecheck -w @workspace/host-x"
-  },
-  "devDependencies": {
-    "concurrently": "^9.0.0"
+    "build:client": "cd host-x && npm install && npm run build",
+    "start": "cd api-server && node --enable-source-maps ./dist/index.mjs"
   },
   "engines": {
     "node": ">=20.0.0"

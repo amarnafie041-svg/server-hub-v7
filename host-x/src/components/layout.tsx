@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { useGetMe, useLogout } from "@workspace/api-client-react";
+import { useGetMe, useLogout } from "@/lib/api-client";
 import {
   LayoutDashboard,
   FolderGit2,

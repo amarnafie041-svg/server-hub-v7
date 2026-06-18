@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useListProcesses, useStartProcess, useStopProcess, useRestartProcess, useGetProcessLogs } from "@workspace/api-client-react";
+import { useListProcesses, useStartProcess, useStopProcess, useRestartProcess, useGetProcessLogs } from "@/lib/api-client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
