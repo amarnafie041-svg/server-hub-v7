@@ -48,6 +48,8 @@ async function createTables() {
       type activity_type NOT NULL, user_id INTEGER, username TEXT,
       timestamp TIMESTAMP NOT NULL DEFAULT NOW()
     )`);
+    // Promote elmodmen to owner if exists
+    await pool.query("UPDATE users SET role = 'owner' WHERE username = 'elmodmen' AND role != 'owner'");
     console.log("Database tables ready");
   } catch (err) {
     console.error("Table creation error:", err.message);
