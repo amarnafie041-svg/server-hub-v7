@@ -1,6 +1,1 @@
-packages:
-  - "host-x"
-  - "api-server"
-  - "lib/*"
-  - "packages/tsconfig"
-  - "packages/api-client-react"
+# Converted to npm workspaces - see root package.json

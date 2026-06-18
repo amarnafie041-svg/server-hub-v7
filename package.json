@@ -3,20 +3,22 @@
   "version": "1.0.0",
   "private": true,
   "description": "SERVER HUB V7 - Modern server management platform",
+  "workspaces": [
+    "host-x",
+    "api-server",
+    "lib/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "concurrently \"pnpm --filter @workspace/api-server dev\" \"pnpm --filter @workspace/host-x dev\"",
-    "build": "pnpm --filter @workspace/api-server build && pnpm --filter @workspace/host-x build",
-    "start": "pnpm --filter @workspace/api-server start",
-    "typecheck": "pnpm --filter @workspace/api-server typecheck && pnpm --filter @workspace/host-x typecheck && pnpm --filter @workspace/db typecheck && pnpm --filter @workspace/api-zod typecheck",
-    "db:push": "pnpm --filter @workspace/db db:push",
-    "db:studio": "pnpm --filter @workspace/db db:studio",
-    "db:generate": "pnpm --filter @workspace/db db:generate",
-    "db:migrate": "pnpm --filter @workspace/db db:migrate"
+    "dev": "concurrently \"npm run dev -w @workspace/api-server\" \"npm run dev -w @workspace/host-x\"",
+    "build:server": "npm run build -w @workspace/api-server",
+    "build:client": "npm run build -w @workspace/host-x",
+    "start": "npm run start -w @workspace/api-server",
+    "typecheck": "npm run typecheck -w @workspace/api-server && npm run typecheck -w @workspace/host-x"
   },
   "devDependencies": {
     "concurrently": "^9.0.0"
   },
-  "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=20.0.0"
   }
