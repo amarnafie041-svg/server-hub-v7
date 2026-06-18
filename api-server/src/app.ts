@@ -57,13 +57,6 @@ app.use(
 
 app.use("/api", router);
 
-// Serve frontend static files in production
-const publicDir = path.resolve(__dirname, "..", "host-x", "dist", "public");
-if (fs.existsSync(publicDir)) {
-  app.use(express.static(publicDir));
-  app.get("*", (_req, res) => {
-    res.sendFile(path.join(publicDir, "index.html"));
-  });
-}
+
 
 export default app;
