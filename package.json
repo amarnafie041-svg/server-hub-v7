@@ -2,9 +2,16 @@
   "name": "server-hub-v7",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build:client": "cd host-x && npm install && npm run build",
-    "start": "cd api-server && node --enable-source-maps ./dist/index.mjs"
+    "dev": "concurrently \"npm run dev --prefix host-x\" \"npm run dev --prefix api-server\"",
+    "build": "npm run build --prefix host-x",
+    "start": "node --enable-source-maps api-server/dist/index.mjs",
+    "db:push": "npm run db:push --prefix lib/db",
+    "db:studio": "npm run db:studio --prefix lib/db"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
   },
   "engines": {
     "node": ">=20.0.0"
