@@ -1,0 +1,23 @@
+{
+  "name": "server-hub-v7",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SERVER HUB V7 - Modern server management platform",
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter @workspace/api-server dev\" \"pnpm --filter @workspace/host-x dev\"",
+    "build": "pnpm --filter @workspace/api-server build && pnpm --filter @workspace/host-x build",
+    "start": "pnpm --filter @workspace/api-server start",
+    "typecheck": "pnpm --filter @workspace/api-server typecheck && pnpm --filter @workspace/host-x typecheck && pnpm --filter @workspace/db typecheck && pnpm --filter @workspace/api-zod typecheck",
+    "db:push": "pnpm --filter @workspace/db db:push",
+    "db:studio": "pnpm --filter @workspace/db db:studio",
+    "db:generate": "pnpm --filter @workspace/db db:generate",
+    "db:migrate": "pnpm --filter @workspace/db db:migrate"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

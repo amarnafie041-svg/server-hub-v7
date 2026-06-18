@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: server-hub-v7
+    runtime: docker
+    repo: https://github.com/taylandi/server-hub-v7
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: "5000"
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: MAIN_DOMAIN
+        value: server-hub-v7.onrender.com
+      - key: BASE_PATH
+        value: /
