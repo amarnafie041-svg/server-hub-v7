@@ -1,12 +1,11 @@
 services:
   - type: web
     name: server-hub-v7
-    runtime: node
+    runtime: docker
     repo: https://github.com/taylandi/server-hub-v7
     plan: free
     region: oregon
-    buildCommand: npm install && cd host-x && npm install && npm run build
-    startCommand: cd api-server && node --enable-source-maps ./dist/index.mjs
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: PORT
         value: "5000"
@@ -20,6 +19,4 @@ services:
         sync: false
       - key: MAIN_DOMAIN
         value: server-hub-v7.onrender.com
-      - key: BASE_PATH
-        value: /
-    healthCheckPath: /api/health
+    healthCheckPath: /api/healthz
